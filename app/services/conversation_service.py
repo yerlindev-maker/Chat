@@ -5,7 +5,7 @@ from uuid import uuid4
 from app.models.conversation import Conversation, Message
 
 class ConversationService:
-    def _init_(self):
+    def __init__(self):
         self._conversations: Dict[str, Conversation] = {}
 
     def get_or_create(self, conversation_id: str | None) -> Conversation:
