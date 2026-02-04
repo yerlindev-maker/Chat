@@ -3,8 +3,10 @@ from typing import Optional
 
 class ChatRequest(BaseModel):
     message: str 
-    user_id: Optional[str] = None
+    user_id: str
+    conversation_id: Optional[str] = None
 
 class ChatResponse(BaseModel):
     reply: str
-    user_id: Optional[str] = None
+    user_id: str
+    conversation_id: Optional[str] = None
