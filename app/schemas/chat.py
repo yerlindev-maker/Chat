@@ -12,3 +12,4 @@ class ChatResponse(BaseModel):
     reply: str
     user_id: str
     conversation_id: Optional[str] = None
+    timestamp: Optional[datetime] = None
