@@ -57,3 +57,4 @@ class ConversationService:
         Devuelve el historial completo de mensajes de una conversación.
         """
         return conversation.messages
+    
