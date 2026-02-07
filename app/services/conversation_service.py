@@ -16,7 +16,6 @@ class ConversationService:
 
         #Crear objeto Conversation
         conversation = Conversation(
-        conversation_id=new_id,
-        user_id=user_id
+            conversation_id=new_id,
+            user_id=user_id
         )
-        
