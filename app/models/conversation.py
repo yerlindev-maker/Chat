@@ -1,14 +1,10 @@
-from typing import List, Literal
-from pydantic import BaseModel
-from datetime import datetime
+from dataclasses import dataclass, field
+from typing import List
+from .message import Message
 
-class Message(BaseModel):
-    #Atributos que tendrá la clase:
-    #El rol solo puede tener dos opciones:
-    role: Literal["user", "assistent"]
-    content: str
-    timestamp: datetime
-
-class Conversation(BaseModel):
-    id: str
-    messages: List[Message] = []
+@dateclass
+class Conversation:
+    conversation_id: str
+    user_id: str
+    messages: List[Message] = field(default_factory=list)
+    
