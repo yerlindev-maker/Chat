@@ -19,3 +19,6 @@ class ConversationService:
             conversation_id=new_id,
             user_id=user_id
         )
+
+        self._conversations[new_id] = conversation
+        return conversation
