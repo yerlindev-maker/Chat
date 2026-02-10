@@ -22,3 +22,9 @@ class ConversationService:
 
         self._conversations[new_id] = conversation
         return conversation
+    
+    def get(self, conversation_id, user_id):
+        if conversation_id is not None and conversation_id in self._conversations:
+            return self._conversations[conversation_id]
+        else:
+            
