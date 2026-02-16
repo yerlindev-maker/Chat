@@ -6,6 +6,7 @@ from uuid import uuid4
 from app.db.database import Base
 from app.models.message import Message
 
+
 class Conversation(Base):
     __tablename__ = "conversations"
 
@@ -24,7 +25,7 @@ class Conversation(Base):
 
     messages: Mapped[List["Message"]] = relationship(
         back_populates="conversation",
-        cascade="all, delete_orphan"
+        cascade="all, delete-orphan"
     )
 
     def add_message(self, role: str, content: str) -> Message:
@@ -33,10 +34,10 @@ class Conversation(Base):
 
         if not content.strip():
             raise ValueError("Message content cannot be empty")
-        
-        if role not in("user", "asistent"):
+
+        if role not in ("user", "assistant"):
             raise ValueError("Invalid role")
-        
+
         message = Message(
             role=role,
             content=content,
@@ -44,7 +45,8 @@ class Conversation(Base):
         )
 
         self.messages.append(message)
+
         return message
-    
+
     def close(self) -> None:
         self.is_closed = True
