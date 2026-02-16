@@ -4,6 +4,7 @@ from datetime import datetime
 
 from app.db.database import Base
 
+
 class Message(Base):
     __tablename__ = "messages"
 
@@ -17,7 +18,7 @@ class Message(Base):
     role: Mapped[str] = mapped_column(String, nullable=False)
     content: Mapped[str] = mapped_column(String, nullable=False)
 
-    timestamp = Mapped[datetime] = mapped_column(
+    timestamp: Mapped[datetime] = mapped_column(
         DateTime,
         default=datetime.utcnow
     )
