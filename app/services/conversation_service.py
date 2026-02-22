@@ -14,4 +14,3 @@ class ConversationService:
             session.refresh(conversation)
 
             return conversation
-                
