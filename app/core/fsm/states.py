@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
+from typing import Optional
 
 
 class StateName (Enum):
@@ -20,5 +21,7 @@ class State:
     name: StateName
     message: str 
     expects_input: bool = True
+    is_finished: bool = False
+    timeout: Optional[int]
 
 STATES = {}
