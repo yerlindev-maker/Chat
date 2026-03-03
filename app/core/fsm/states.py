@@ -22,6 +22,21 @@ class State:
     message: str 
     expects_input: bool = True
     is_finished: bool = False
-    timeout: Optional[int]
+    timeout: Optional[int] = None
 
-STATES = {}
+
+STATES = {
+    StateName.IDLE: State(
+        name=StateName.IDLE,
+        message="¡Hola! ¿En qué puedo ayudarte?",
+    ),
+    StateName.GREETING: State(
+        name=StateName.GREETING,
+        message="¡Hola!, Bienvenido",
+        expects_input=False
+    ),
+    StateName.MENU: State(
+        name=StateName.MENU,
+        message="Por favor seleccione una de las siguientes opciones"
+    )
+}
