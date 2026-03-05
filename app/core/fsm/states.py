@@ -37,6 +37,22 @@ STATES = {
     ),
     StateName.MENU: State(
         name=StateName.MENU,
-        message="Por favor seleccione una de las siguientes opciones"
+        message="Por favor seleccione una de las siguientes opciones: "
+    ),
+    StateName.COLLECTING_NAME: State(
+        name=StateName.COLLECTING_NAME,
+        message="Por favor ingrese el nombre de la persona a la cuál se le agendará la cita: "
+    ),
+    StateName.COLLECTING_ID: State(
+        name=StateName.COLLECTING_NAME,
+        message="Por favor ingrese el número de identificación de la persona: "
+    ),
+    StateName.COLLECTING_PLACE: State(
+        name=StateName.COLLECTING_PLACE,
+        message="Por favor escoja la sede: "
+    ),
+    StateName.COLLECTING_DATE: State(
+        name=StateName.COLLECTING_DATE,
+        message="Escoja alguna de las fechas disponibles: "
     )
 }
