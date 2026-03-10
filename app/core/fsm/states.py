@@ -61,11 +61,13 @@ STATES = {
     ),
     StateName.CONFIRMED: State(
         name=StateName.CONFIRMED,
-        message="Su cita ha sido confirmada\n¿Desea regresar al Menú?"
+        message="Su cita ha sido confirmada\n¿Desea regresar al Menú?",
+        expects_input=False
     ),
     StateName.CANCELLED: State(
         name=StateName.CANCELLED,
-        message="La cita ha sido cancelada."
+        message="La cita ha sido cancelada.",
+        expects_input=False
     ),
     StateName.ERROR: State(
         name=StateName.ERROR,
