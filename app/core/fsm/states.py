@@ -54,7 +54,22 @@ STATES = {
     StateName.COLLECTING_DATE: State(
         name=StateName.COLLECTING_DATE,
         message="Escoja alguna de las fechas disponibles: "
+    ),
+    StateName.CONFIRMING: State(
+        name=StateName.CONFIRMING,
+        message="Resumen de tu cita:\n{summary}\n\n¿Desea confirmar?\nEscribe *sí* o *no*"
+    ),
+    StateName.CONFIRMED: State(
+        name=StateName.CONFIRMED,
+        message="Su cita ha sido confirmada\n¿Desea regresar al Menú?"
+    ),
+    StateName.CANCELLED: State(
+        name=StateName.CANCELLED,
+        message="La cita ha sido cancelada."
+    ),
+    StateName.ERROR: State(
+        name=StateName.ERROR,
+        message="Ha ocurrido un error, por favor intente de nuevo."
     )
-
     
 }
