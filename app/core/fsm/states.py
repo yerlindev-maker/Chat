@@ -44,7 +44,7 @@ STATES = {
         message="Por favor ingrese el nombre de la persona a la cuál se le agendará la cita: "
     ),
     StateName.COLLECTING_ID: State(
-        name=StateName.COLLECTING_NAME,
+        name=StateName.COLLECTING_ID,
         message="Por favor ingrese el número de identificación de la persona: "
     ),
     StateName.COLLECTING_PLACE: State(
