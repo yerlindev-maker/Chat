@@ -1,11 +1,19 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-DATABASE_URL = "postgresql+psycopg2://ysperea:w4rr10rs*+@localhost:5432/chat_app"
+from app.config.settings import get_settings
 
-engine = create_engine(DATABASE_URL, echo=True)
+settings = get_settings()
+DATABASE_URL = settings.database_url
+
+engine = create_engine(
+    DATABASE_URL,
+    echo=True,
+    connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {},
+)
 
 SessionLocal = sessionmaker(bind=engine)
+
 
 class Base(DeclarativeBase):
     pass
