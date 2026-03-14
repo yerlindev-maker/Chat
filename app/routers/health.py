@@ -1,3 +1,4 @@
+# Endpoints de monitoreo de la aplicacion.
 from fastapi import APIRouter
 
 router = APIRouter(
@@ -5,6 +6,8 @@ router = APIRouter(
     tags=["Health"]
 )
 
+
 @router.get("/", summary="Health Check")
 def health_check():
-    return{"status": "ok"}
+    # Respuesta minima para verificar disponibilidad.
+    return {"status": "ok"}

@@ -1,5 +1,7 @@
 from fastapi.testclient import TestClient
 
+
+# Verifica que el chat conserva contexto entre peticiones.
 def test_chat_remembers_previous_message(client):
 
     response_1 = client.post(
@@ -17,7 +19,7 @@ def test_chat_remembers_previous_message(client):
     response_2 = client.post(
         "/chat/message",
         json={
-            "message": "Mañana",
+            "message": "MaÃ±ana",
             "user_id": "123"
         }
     )
