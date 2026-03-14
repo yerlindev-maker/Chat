@@ -1,4 +1,4 @@
-# Definiciones de estados para la maquina de estados del chatbot.
+﻿# Definiciones de estados para la maquina de estados del chatbot.
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional
@@ -31,11 +31,11 @@ class State:
 STATES = {
     StateName.IDLE: State(
         name=StateName.IDLE,
-        message="Â¡Hola! Â¿En quÃ© puedo ayudarte?",
+        message="¡Hola! ¿En qué puedo ayudarte?",
     ),
     StateName.GREETING: State(
         name=StateName.GREETING,
-        message="Â¡Hola!, Bienvenido",
+        message="¡Hola!, Bienvenido",
         expects_input=False
     ),
     StateName.MENU: State(
@@ -44,11 +44,11 @@ STATES = {
     ),
     StateName.COLLECTING_NAME: State(
         name=StateName.COLLECTING_NAME,
-        message="Por favor ingrese el nombre de la persona a la cual se le agendara la cita: "
+        message="Por favor ingrese el nombre de la persona a la cual se le agendará la cita: "
     ),
     StateName.COLLECTING_ID: State(
         name=StateName.COLLECTING_ID,
-        message="Por favor ingrese el nÃºmero de identificaciÃ³n de la persona: "
+        message="Por favor ingrese el número de identificación de la persona: "
     ),
     StateName.COLLECTING_PLACE: State(
         name=StateName.COLLECTING_PLACE,
@@ -60,11 +60,11 @@ STATES = {
     ),
     StateName.CONFIRMING: State(
         name=StateName.CONFIRMING,
-        message="Resumen de tu cita:\n{summary}\n\nÂ¿Desea confirmar?\nEscribe *sÃ­* o *no*"
+        message="Resumen de tu cita:\n{summary}\n\n¿Desea confirmar?\nEscribe *sí* o *no*"
     ),
     StateName.CONFIRMED: State(
         name=StateName.CONFIRMED,
-        message="Su cita ha sido confirmada\nÂ¿Desea regresar al MenÃº?",
+        message="Su cita ha sido confirmada\n¿Desea regresar al Menú?",
         expects_input=False
     ),
     StateName.CANCELLED: State(
