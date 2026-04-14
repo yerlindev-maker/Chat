@@ -101,7 +101,7 @@ TRANSITIONS=[
     Transition(
         from_state=StateName.COLLECTING_NAME,
         condition=validate_name,
-        error_message= ,
+        error_message="Nombre inválido"
         to_state=StateName.COLLECTING_ID
     ),
     Transition(
