@@ -5,11 +5,14 @@ from typing import Callable, Optional
 from app.core.fsm.states import StateName
 from datetime import datetime
 
+Context = dict[str, any]
+
 @dataclass
 class Transition:
     from_state: StateName
-    condition: Callable[[str], bool]
     to_state: StateName
+    condition: Callable[[str, Context], bool]
+    action: Optional[Callable[[str, Context], Context]] = None
     error_message: Optional[str] = None
     priority: int = 100
 
@@ -20,8 +23,8 @@ def start_chat (user_input: str):
     return True
 
 #MENU
-def option_1(user_input: str):
-    return user_input == "1"
+def option_1(user_input: str, context: Context) -> Context:
+    return {"flow": "agendar"}
 
 def option_2(user_input: str):
     return user_input == "2"
@@ -73,7 +76,8 @@ def user_cancels(user_input: str):
     return user_input.lower() in ["no", "cancelar", "nop"]
 
 #TRANSITIONS
-TRANSITIONS=[    
+TRANSITIONS=[
+
     Transition(
         from_state=StateName.IDLE,
         condition=start_chat,
@@ -101,22 +105,25 @@ TRANSITIONS=[
     Transition(
         from_state=StateName.COLLECTING_NAME,
         condition=validate_name,
-        error_message="Nombre inválido"
+        error_message="Nombre inválido",
         to_state=StateName.COLLECTING_ID
     ),
     Transition(
         from_state=StateName.COLLECTING_ID,
         condition=validate_id,
+        error_message="ID inválido",
         to_state=StateName.COLLECTING_PLACE
     ),
     Transition(
         from_state=StateName.COLLECTING_PLACE,
         condition=validate_place,
+        error_message="Error seleccionando el lugar",
         to_state=StateName.COLLECTING_DATE
     ),
     Transition(
         from_state=StateName.COLLECTING_DATE,
         condition=validate_date,
+        error_message="Error en la fecha", 
         to_state=StateName.CONFIRMING
     ),
     Transition(
@@ -127,6 +134,7 @@ TRANSITIONS=[
     Transition(
         from_state=StateName.CONFIRMING,
         condition=user_cancels,
+        error_message="Error confirmando cita",
         to_state=StateName.CANCELLED
     ),
     Transition(
